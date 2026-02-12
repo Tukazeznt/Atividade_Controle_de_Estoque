@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!-- Define o tipo do documento como HTML5 -->
+<html lang="pt-BR">
+<!-- Início do documento HTML -->
+<!-- lang="pt-BR" indica que o idioma da página é Português do Brasil -->
+
+<head>
+    <!-- Início da área de configurações da página -->
+
+    <meta charset="UTF-8">
+    <!-- Define o conjunto de caracteres como UTF-8 -->
+    <!-- Permite usar acentos e caracteres especiais -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Faz a página se adaptar a dispositivos móveis -->
+
+    <title>Exemplo de Array em JavaScript</title>
+    <!-- Título exibido na aba do navegador -->
+
+    <style>
+        /* ===============================
+           ESTILIZAÇÃO GERAL DA PÁGINA
+           =============================== */
+
+        body {
+            /* Define a fonte do texto */
+            font-family: Arial, sans-serif;
+
+            /* Cor de fundo da página */
+            background-color: #8cb9e6;
+
+            /* Espaçamento interno */
+            padding: 30px;
+
+            color: black;
+        }
+
+        /* ===============================
+           ESTILIZAÇÃO DO TÍTULO
+           =============================== */
+
+        h1 {
+            /* Cor do texto */
+            color: #333;
+
+            /* Centraliza o texto */
+            text-align: center;
+        }
+
+        /* ===============================
+           ESTILIZAÇÃO DA DIV DE RESULTADO
+           =============================== */
+
+        #resultado {
+            /* Fundo branco */
+            background-color: #ffffff;
+
+            /* Espaçamento interno */
+            padding: 15px;
+
+            /* Bordas arredondadas */
+            border-radius: 10px;
+
+            /* Sombra suave */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+            /* Largura fixa */
+            width: 350px;
+
+            /* Centraliza horizontalmente */
+            margin: 20px auto;
+        }
+
+        /* ===============================
+           ESTILIZAÇÃO DOS BOTÕES
+           =============================== */
+
+        button {
+            /* Espaçamento externo */
+            margin: 5px;
+
+            /* Espaçamento interno */
+            padding: 10px 15px;
+
+            /* Tamanho do texto */
+            font-size: 16px;
+
+            /* Bordas arredondadas */
+            border-radius: 6px;
+
+            /* Remove a borda padrão */
+            border: none;
+
+            /* Cursor de mão */
+            cursor: pointer;
+
+            /* Cor de fundo azul */
+            background-color: #007bff;
+
+            /* Texto branco */
+            color: white;
+
+            /* Animação suave */
+            transition: 0.2s;
+        }
+
+        /* ===============================
+           EFEITO AO PASSAR O MOUSE
+           =============================== */
+
+        button:hover {
+            /* Azul mais escuro */
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Início do corpo da página -->
+
+    <!-- Título principal da página -->
+    <h1>Exemplo de uso de Array em JavaScript 🍓🍌</h1>
+
+    <!-- Div onde o conteúdo do array será exibido -->
+    <div id="resultado"></div>
+
+    <!-- Div que contém os botões -->
+    <div style="text-align: center;">
+        <!-- Botão para mostrar o array -->
+        <button onclick="mostrarFrutas()">Mostrar Frutas</button>
+
+        <!-- Botão para adicionar fruta -->
+        <button onclick="adicionarFruta()">Adicionar Fruta</button>
+
+        <!-- Botão para remover a última fruta -->
+        <button onclick="removerUltima()">Remover Última</button>
+    </div>
+
+    <script>
+        /* ===============================
+           JAVASCRIPT
+           =============================== */
+
+        // 1 - Criação do array vazio chamado "frutas"
+        // Um array é uma estrutura que armazena vários valores
+        let frutas = [];
+
+        // 2 - Função responsável por exibir o conteúdo do array
+        function mostrarFrutas() {
+
+            // Captura a div onde o resultado será exibido
+            let resultadoDiv = document.getElementById("resultado");
+
+            // Verifica se o array está vazio
+            if (frutas.length === 0) {
+
+                // Se estiver vazio, mostra mensagem informativa
+                resultadoDiv.innerHTML = `
+                    <strong>Array completo:</strong> [] <br>
+                    <strong>Quantidade de frutas:</strong> 0 <br>
+                    <em>O array está vazio.</em>
+                `;
+            } else {
+
+                // Caso o array tenha elementos
+                // join(", ") transforma o array em texto separado por vírgula
+                resultadoDiv.innerHTML = `
+                    <strong>Array completo:</strong> ${frutas.join(", ")} <br>
+                    <strong>Quantidade de frutas:</strong> ${frutas.length} <br>
+                `;
+            }
+        }
+
+        // 3 - Função para adicionar uma nova fruta ao array
+        function adicionarFruta() {
+
+            // prompt abre uma caixa para o usuário digitar
+            let novaFruta = prompt("Digite o nome da nova fruta:");
+
+            // Verifica se o usuário digitou algo
+            if (novaFruta) {
+
+                // push() adiciona um elemento no FINAL do array
+                frutas.push(novaFruta);
+
+                // Atualiza a exibição
+                mostrarFrutas();
+            }
+        }
+
+        // 4 - Função para remover a última fruta do array
+        function removerUltima() {
+
+            // Verifica se o array tem elementos
+            if (frutas.length > 0) {
+
+                // pop() remove o ÚLTIMO elemento do array
+                frutas.pop();
+            } else {
+
+                // Se estiver vazio, mostra alerta
+                alert("O array já está vazio!");
+            }
+
+            // Atualiza a exibição após remover
+            mostrarFrutas();
+        }
+
+        // Ao carregar a página, já mostra o estado inicial
+        mostrarFrutas();
+
+    </script>
+
+</body>
+</html>
